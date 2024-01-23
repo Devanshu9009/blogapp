@@ -23,19 +23,21 @@ app.post("/",async(req,resp)=>
 {
         const newimage=new student({
             name:req.body.name,
-            image:"localhost:4000/uplodes/"+req.file.filename
+            image:"localhost:4000/uploads/"+req.file.filename
         })
        newimage.save()
        resp.send("file upload")
         
     })
+})
     // const data=new student(req.body)
     // const result=await data.save()
     // resp.send(result)
 app.get("/",async(req,res)=>{
-    const data = await student.find()
+    let data = await student.find()
     res.send(data)
 })
-}).listen(4000)
+
+app.listen(4000)
 
 
