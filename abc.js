@@ -33,7 +33,7 @@ app.post("/",async(req,resp)=>
     // const result=await data.save()
     // resp.send(result)
 app.get("/",async(req,res)=>{
-    const data = await Imagemodel.find()
+    const data = await student.find()
     res.send(data)
 })
 }).listen(4000)
