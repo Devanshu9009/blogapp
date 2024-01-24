@@ -32,6 +32,7 @@ app.post("/",async(req,resp)=>
        resp.send("file upload")
         
     })
+
 })
     // const data=new student(req.body)
     // const result=await data.save()
@@ -39,6 +40,10 @@ app.post("/",async(req,resp)=>
 app.get("/",async(req,res)=>{
     let data = await student.find()
     res.send(data)
+})
+app.put('/update',upload,async(req,resp)=>{
+    const data=await student.updateOne({bid:req.body.bid},{$set:{bname:req.body.bname}})
+    resp.send({meassage: "Suceess",data:data})
 })
 
 app.listen(4000)
