@@ -16,14 +16,17 @@ const storage = multer.diskStorage({
         cb(null,file.originalname)
     }
 });
-const upload = multer({storage: storage}).single("pimage");
+const upload = multer({storage: storage}).single("bimage");
 app.post("/",async(req,resp)=>
 {
     upload(req,resp,async(err)=>
 {
         const newimage=new student({
-            name:req.body.name,
-            image:"localhost:4000/uploads/"+req.file.filename
+            bid:req.body.bid,
+            bname:req.body.bname,
+            bdesc:req.body.bdesc,
+            bcat:req.body.bcat,
+            bimage:"localhost:4000/uploads/"+req.file.filename
         })
        newimage.save()
        resp.send("file upload")
